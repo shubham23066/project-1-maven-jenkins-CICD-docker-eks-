@@ -19,7 +19,7 @@ pipeline{
         }
         stage('Checkout from Git'){
             steps{
-                git branch: 'main', url: 'https://github.com/vardhan1228/project-1-maven-jenkins-CICD-docker-eks-.git'
+                git branch: 'main', url: 'https://github.com/shubham23066/project-1-maven-jenkins-CICD-docker-eks-.git'
             }
         }
         stage('maven install') { 
@@ -80,14 +80,14 @@ pipeline{
         stage('Update Deployment file') {
             environment {
                 GIT_REPO_NAME = "project-1-maven-jenkins-CICD-docker-eks-"
-                GIT_USER_NAME = "vardhan1228"
+                GIT_USER_NAME = "shubham23066@gmail.com"
             }
             steps {
                 dir('Kubernetes-Manifests-file') {
                     withCredentials([string(credentialsId: 'github', variable: 'git_token')]) {
                         sh '''
-                            git config user.email "vvardhan1211@gmail.com"
-                            git config user.name "vardhan1228"
+                            git config user.email "shubham23066@gmail.com"
+                            git config user.name "shubham23066@gmail.com"
                             BUILD_NUMBER=${BUILD_NUMBER}
                             echo $BUILD_NUMBER
                             sed -i "s#image:.*#image: $REPOSITORY_URI$AWS_ECR_REPO_NAME:$BUILD_NUMBER#g" deploy_svc.yml
@@ -104,7 +104,7 @@ pipeline{
                 script{
                     dir('Kubernetes-Manifests-file') {
                         withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'k8s', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
-                                sh 'aws eks update-kubeconfig --name project-eks --region us-east-2'
+                                sh 'aws eks update-kubeconfig --name project-eks --region eu-central-1'
                                 sh 'kubectl apply -f deploy_svc.yml'
                         }   
                     }
