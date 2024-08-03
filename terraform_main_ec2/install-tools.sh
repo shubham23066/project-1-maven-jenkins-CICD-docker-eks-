@@ -25,11 +25,11 @@ sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinu
 sudo yum -y install terraform
 
 #---------------------------------install tomcat------------------
-#sudo wget url https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.83/bin/apache-tomcat-9.0.83.tar.gz
-#sudo tar -xvzf apache-tomcat-9.0.83.tar.gz #untar
-#cd apache-tomcat-9.0.83
-#cd bin
-#chmod +x startup.sh
+sudo wget url https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.83/bin/apache-tomcat-9.0.83.tar.gz
+sudo tar -xvzf apache-tomcat-9.0.83.tar.gz #untar
+cd apache-tomcat-9.0.83
+cd bin
+chmod +x startup.sh
 
 
 
@@ -89,9 +89,9 @@ helm install stable prometheus-community/kube-prometheus-stack -n prometheus
 echo "Initialization script completed successfully."
 
 #----------------------sonarQube install-----------------------------------
-#sudo yum -y install wget nfs-utils
-#sudo wget -O /etc/yum.repos.d/sonar.repo http://downloads.sourceforge.net/project/sonar-pkg/rpm/sonar.repo
-#sudo yum -y install sonar
+sudo yum -y install wget nfs-utils
+sudo wget -O /etc/yum.repos.d/sonar.repo http://downloads.sourceforge.net/project/sonar-pkg/rpm/sonar.repo
+sudo yum -y install sonar
 #-----------------------JFROg-----------------------------
 #sudo wget https://releases.jfrog.io/artifactory/artifactory-rpms/artifactory-rpms.repo -O jfrog-artifactory-rpms.repo;
 
@@ -102,7 +102,7 @@ echo "Initialization script completed successfully."
 #sudo systemctl start artifactory.service
 
 #------------------ Tomcat-----------------------------
-#docker run -d --name tomcat -p 8089:8080 tomcat:lts-community
+docker run -d --name tomcat -p 8089:8080 tomcat:lts-community
 
 
 
