@@ -1,10 +1,10 @@
 provider "aws" {
-  region = "us-east-1"  # Specify your desired region
+  region = "eu-central-1"  # Specify your desired region
 }
 
  #Creating IAM role for EKS
   resource "aws_iam_role" "master" {
-    name = "vardhan-eks-master2"
+    name = "shubham-eks-master2"
 
     assume_role_policy = jsonencode({
       "Version": "2012-10-17",
@@ -36,7 +36,7 @@ provider "aws" {
   }
 
   resource "aws_iam_role" "worker" {
-    name = "vardhan-eks-worker2"
+    name = "shubham-eks-worker2"
 
     assume_role_policy = jsonencode({
       "Version": "2012-10-17",
@@ -53,7 +53,7 @@ provider "aws" {
   }
 
   resource "aws_iam_policy" "autoscaler" {
-    name = "vardhan-eks-autoscaler-policy2"
+    name = "shubham-eks-autoscaler-policy2"
     policy = jsonencode({
       "Version": "2012-10-17",
       "Statement": [
