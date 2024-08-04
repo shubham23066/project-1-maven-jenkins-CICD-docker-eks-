@@ -117,7 +117,7 @@ provider "aws" {
   }
 }
 
-data "aws_subnet" "subnet-1" {
+data "aws_subnet" "subnet_1" {
  vpc_id = data.aws_vpc.main.id
  filter {
     name = "tag:Name"
@@ -125,7 +125,7 @@ data "aws_subnet" "subnet-1" {
  }
 }
 
-data "aws_subnet" "subnet-2" {
+data "aws_subnet" "subnet_2" {
  vpc_id = data.aws_vpc.main.id
  filter {
     name = "tag:Name"
@@ -146,7 +146,7 @@ data "aws_security_group" "selected" {
     role_arn = aws_iam_role.master.arn
 
     vpc_config {
-      subnet_ids = [data.aws_subnet.subnet-1.id, data.aws_subnet.subnet-2.id]
+      subnet_ids = [data.aws_subnet.subnet_1.id, data.aws_subnet.subnet_2.id]
     }
 
     tags = {
@@ -163,7 +163,7 @@ data "aws_security_group" "selected" {
     cluster_name    = aws_eks_cluster.eks.name
     node_group_name = "project-node-group"
     node_role_arn   = aws_iam_role.worker.arn
-    subnet_ids      = [data.aws_subnet.subnet-1.id, data.aws_subnet.subnet-2.id]
+    subnet_ids      = [data.aws_subnet.subnet_1.id, data.aws_subnet.subnet_2.id]
     capacity_type   = "ON_DEMAND"
     disk_size       = 20
     instance_types  = ["t2.small"]
